@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Menu = {
   id: string;
@@ -10,14 +10,18 @@ type Menu = {
 
 const Meals = () => {
   const [loadedMeals, setLoadedMeals] = useState<Array<Menu>>([]);
-  const featchMeal: () => Promise<void> = async () => {
-    const response: Response = await fetch("http://localhost:3000/meals");
-    if (!response.ok) {
-      return;
-    }
-    const data: Array<Menu> = await response.json();
-    setLoadedMeals(data);
-  };
+
+  useEffect(() => {
+    const featchMeal: () => Promise<void> = async () => {
+      const response: Response = await fetch("http://localhost:3000/meals");
+      if (!response.ok) {
+        return;
+      }
+      const data: Array<Menu> = await response.json();
+      setLoadedMeals(data);
+    };
+    featchMeal();
+  }, []);
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => (
