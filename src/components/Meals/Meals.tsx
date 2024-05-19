@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import MealItem from "./MealItem";
 
-type Menu = {
+type Meal = {
   id: string;
   name: string;
   price: string;
@@ -9,7 +10,7 @@ type Menu = {
 };
 
 const Meals = () => {
-  const [loadedMeals, setLoadedMeals] = useState<Array<Menu>>([]);
+  const [loadedMeals, setLoadedMeals] = useState<Array<Meal>>([]);
 
   useEffect(() => {
     const featchMeal: () => Promise<void> = async () => {
@@ -17,7 +18,7 @@ const Meals = () => {
       if (!response.ok) {
         return;
       }
-      const data: Array<Menu> = await response.json();
+      const data: Array<Meal> = await response.json();
       setLoadedMeals(data);
     };
     featchMeal();
@@ -25,7 +26,7 @@ const Meals = () => {
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => (
-        <li key={meal.id}>{meal.name}</li>
+        <MealItem key={meal.id} meal={meal} />
       ))}
     </ul>
   );
