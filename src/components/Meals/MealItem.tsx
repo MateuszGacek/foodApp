@@ -1,13 +1,9 @@
 import Button from "../UI/Button";
+import { Meal } from "../type/Meal";
 import { currencyFormatter } from "../utils/formatting";
 
 type MealItemProps = {
-  meal: {
-    name: string;
-    price: string;
-    description: string;
-    image: string;
-  };
+  meal: Meal;
 };
 
 const MealItem = ({ meal }: MealItemProps) => {

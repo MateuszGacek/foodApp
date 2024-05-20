@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
-
-type Meal = {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  image: string;
-};
+import { Meal } from "../type/Meal";
 
 const Meals = () => {
   const [loadedMeals, setLoadedMeals] = useState<Array<Meal>>([]);
