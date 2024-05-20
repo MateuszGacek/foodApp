@@ -1,6 +1,6 @@
 type ButtonProps = {
   children: React.ReactNode;
-  textOnly?: string;
+  textOnly?: boolean;
   className?: string;
 };
 
