@@ -1,12 +1,18 @@
+import { useContext } from "react";
 import Button from "../UI/Button";
 import { Meal } from "../type/Meal";
 import { currencyFormatter } from "../utils/formatting";
+import CartContext from "../../store/CartContext";
 
 type MealItemProps = {
   meal: Meal;
 };
 
 const MealItem = ({ meal }: MealItemProps) => {
+  const cartCtx = useContext(CartContext);
+  const addMealToCart = () => {
+    cartCtx.addItem(meal);
+  };
   return (
     <li className="meal-item">
       <article>
@@ -19,7 +25,7 @@ const MealItem = ({ meal }: MealItemProps) => {
           <p className="meal-item-description">{meal.description}</p>
         </div>
         <p className="meal-item-actions">
-          <Button>Add To Cart</Button>
+          <Button onClick={addMealToCart}>Add To Cart</Button>
         </p>
       </article>
     </li>
