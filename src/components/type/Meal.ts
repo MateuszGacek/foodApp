@@ -4,4 +4,5 @@ export type Meal = {
   price: string;
   description: string;
   image: string;
+  quantity?: number;
 };
