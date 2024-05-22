@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, ReactNode } from "react";
+import React, { createContext, useReducer } from "react";
 import { Meal } from "../components/type/Meal";
 
 type CartContextValue = {
@@ -63,7 +63,11 @@ const cartReducer = (state: CartState, action: ItemAction): CartState => {
   return state;
 };
 
-export function CartContextProvider({ children }: { children: ReactNode }) {
+export function CartContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] });
 
   const addItem = (item: Meal) => {
