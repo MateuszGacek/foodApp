@@ -5,9 +5,10 @@ type ModalProps = {
   children: React.ReactNode;
   open: boolean;
   className?: string;
+  onClose?: () => void;
 };
 
-const Modal = ({ children, open, className = "" }: ModalProps) => {
+const Modal = ({ children, open, className = "", onClose }: ModalProps) => {
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const modal = dialog.current!;
@@ -17,7 +18,7 @@ const Modal = ({ children, open, className = "" }: ModalProps) => {
     return () => modal.close();
   }, [open]);
   return createPortal(
-    <dialog ref={dialog} className={`${className} modal`}>
+    <dialog ref={dialog} className={`${className} modal`} onClose={onClose}>
       {children}
     </dialog>,
     document.getElementById("modal")!

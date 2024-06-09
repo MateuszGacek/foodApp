@@ -1,7 +1,10 @@
 import { ReactNode, createContext, useState } from "react";
 
+// Define a union type for the allowed progress values
+type ProgressType = "" | "cart" | "checkout";
+
 type UserProgressContextType = {
-  progress: string;
+  progress: ProgressType;
   showCart: () => void;
   hideCart: () => void;
   showCheckout: () => void;
@@ -21,7 +24,8 @@ export const UserProgressContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [userProgress, setUserProgress] = useState<string>("");
+  const [userProgress, setUserProgress] = useState<ProgressType>("");
+
   const showCart = () => {
     setUserProgress("cart");
   };
@@ -34,6 +38,7 @@ export const UserProgressContextProvider = ({
   const hideCheckout = () => {
     setUserProgress("");
   };
+
   const userProgressCtx = {
     progress: userProgress,
     showCart,
@@ -41,6 +46,7 @@ export const UserProgressContextProvider = ({
     showCheckout,
     hideCheckout,
   };
+
   return (
     <UserProgressContext.Provider value={userProgressCtx}>
       {children}

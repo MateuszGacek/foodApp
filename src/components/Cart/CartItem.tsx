@@ -1,4 +1,3 @@
-import Button from "../UI/Button";
 import { Meal } from "../type/Meal";
 import { currencyFormatter } from "../utils/formatting";
 
@@ -21,9 +20,9 @@ const CartItem = ({
         {name} - {quantity} x {currencyFormatter.format(+price)}
       </p>
       <p className="cart-item-actions">
-        <Button onClick={onIncrease}>+</Button>
+        <button onClick={onIncrease}>+</button>
         <span></span>
-        <Button onClick={onDecrease}>-</Button>
+        <button onClick={onDecrease}>-</button>
       </p>
     </li>
   );

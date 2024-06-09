@@ -1,9 +1,11 @@
+import { ButtonHTMLAttributes } from "react";
+
 type ButtonProps = {
   children: React.ReactNode;
   textOnly?: boolean;
   className?: string;
   onClick?: () => void;
-};
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({
   onClick,
