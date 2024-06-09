@@ -1,3 +1,4 @@
+import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Meals from "./components/Meals";
 
@@ -10,6 +11,7 @@ const App = () => {
       <CartContextProvider>
         <Header />
         <Meals />
+        <Cart />
       </CartContextProvider>
     </UserProgressContextProvider>
   );

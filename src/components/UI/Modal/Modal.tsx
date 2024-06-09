@@ -10,9 +10,11 @@ type ModalProps = {
 const Modal = ({ children, open, className = "" }: ModalProps) => {
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
+    const modal = dialog.current!;
     if (open) {
-      dialog.current!.showModal();
+      modal.showModal();
     }
+    return () => modal.close();
   }, [open]);
   return createPortal(
     <dialog ref={dialog} className={`${className} modal`}>
