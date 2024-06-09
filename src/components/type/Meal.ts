@@ -5,4 +5,5 @@ export type Meal = {
   description: string;
   image: string;
   quantity?: number;
+  key?: string;
 };

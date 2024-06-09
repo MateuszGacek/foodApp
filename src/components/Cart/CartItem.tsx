@@ -2,16 +2,28 @@ import Button from "../UI/Button";
 import { Meal } from "../type/Meal";
 import { currencyFormatter } from "../utils/formatting";
 
-const CartItem = ({ name, quantity, price }: Meal) => {
+type CartItemProp = Meal & {
+  onIncrease: () => void;
+  onDecrease: () => void;
+};
+
+const CartItem = ({
+  name,
+  quantity,
+  price,
+  key,
+  onIncrease,
+  onDecrease,
+}: CartItemProp) => {
   return (
-    <li className="cart-item">
+    <li className="cart-item" key={key}>
       <p>
         {name} - {quantity} x {currencyFormatter.format(+price)}
       </p>
       <p className="cart-item-actions">
-        <Button>+</Button>
+        <Button onClick={onIncrease}>+</Button>
         <span></span>
-        <Button>-</Button>
+        <Button onClick={onDecrease}>-</Button>
       </p>
     </li>
   );
