@@ -19,7 +19,7 @@ const Checkout = () => {
     const fd = new FormData(event.target as HTMLFormElement);
     const customerData = Object.fromEntries(fd.entries());
 
-    fetch("https://localhost:3000/orders", {
+    fetch("http://localhost:3000/orders", {
       method: "POST",
       headers: { "Content-type": "aplication/json" },
       body: JSON.stringify({
